@@ -1,11 +1,11 @@
-import 'package:bangun_datar_app/controller/persegipanjang_controller.dart';
+import 'package:bangun_datar_app/controller/lingkaran_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PersegiPanjangPage extends StatelessWidget {
-  PersegiPanjangPage({super.key});
+class LingkaranPage extends StatelessWidget {
+  LingkaranPage({super.key});
 
-  final PersegiPanjangController _persegipanjangController = Get.put(PersegiPanjangController());
+  final LingkaranController _lingkaranController = Get.put(LingkaranController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,49 +20,24 @@ class PersegiPanjangPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image.asset("assets/ppanjang.png", height: 100),
+          Image.asset("assets/lingkaran.png", height: 10),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 16),
             child: Text("PersegiPanjang"),
           ),
           Text(
-              "Persegi panjang (bahasa Inggris: rectangle) adalah bangun datar dua dimensi yang dibentuk oleh dua pasang sisi yang masing-masing sama panjang dan sejajar dengan pasangannya, dan memiliki empat buah sudut yang kesemuanya adalah sudut siku-siku."),
+              "pengertian lingkaran adalah bangun datar dua dimensi yang terbentuk dari sekumpulan titik dengan jarak yang konstan atau teratur dari titik tetap pada sebuah bidang. Titik tetap pada sebuah bangun datar lingkaran ini disebut juga dengan titik asal atau titik pusat lingkaran."),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(
               onChanged: (value) {
-                _persegipanjangController.panjang = int.parse(value);
+                _lingkaranController.jari = int.parse(value);
               },
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  labelText: "Panjang",
-                  hintText: "Masukkan Panjang",
-                  hintStyle: TextStyle(color: Colors.grey.shade400),
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.grey),
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.blue),
-                      borderRadius: BorderRadius.all(Radius.circular(10)))),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: TextFormField(
-              onChanged: (value) {
-                _persegipanjangController.lebar = int.parse(value);
-              },
-              decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  labelText: "Lebar",
-                  hintText: "Masukkan Lebar",
+                  labelText: "Jari-Jari",
+                  hintText: "Masukkan Jari-Jari",
                   hintStyle: TextStyle(color: Colors.grey.shade400),
                   contentPadding:
                   EdgeInsets.symmetric(vertical: 4, horizontal: 8),
@@ -84,18 +59,16 @@ class PersegiPanjangPage extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
                     onPressed: () {
-                      _persegipanjangController.hitungLuas();
+                      _lingkaranController.hitungLuas();
                     },
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white, // text color
                         backgroundColor: Colors.greenAccent),
-                    child: Text("Hitung Luas")),
+                    child: Text("Hitung Jari-Jari")),
               ),
-
-
               ElevatedButton(
                   onPressed: () {
-                    _persegipanjangController.hitungKeliling();
+                    _lingkaranController.hitungKeliling();
                   },
                   style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black, // text color
@@ -105,9 +78,9 @@ class PersegiPanjangPage extends StatelessWidget {
           ),
           Obx(
                 () => Text(
-              _persegipanjangController.hasil.value,
+              _lingkaranController.hasil.value,
               style: TextStyle(
-                color: _persegipanjangController.isHitungLuas.value
+                color: _lingkaranController.isHitungLuas.value
                     ? Colors.greenAccent
                     : Colors.yellowAccent,
               ),

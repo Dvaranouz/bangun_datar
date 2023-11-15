@@ -14,7 +14,7 @@ class PersegiPanjangController extends GetxController{
     isHitungLuas.value = true;
   }
   void hitungKeliling() {
-    int hitung = 2 * (panjang + lebar);
+    int hitung = 2 * panjang + lebar;
     hasil.value = "Hasil perhitungan dari 2 x $panjang + $lebar = $hitung";
     isHitungLuas.value = false;
   }
