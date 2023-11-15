@@ -1,3 +1,5 @@
+import 'package:bangun_datar_app/page/persegi_page.dart';
+import 'package:bangun_datar_app/page/persegi_panjang_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,10 +15,29 @@ class HomePage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
-          CustomMenu(imageAssets: "assets/persegi.png", title: "persegi"),
-          CustomMenu(imageAssets: "assets/segitiga.jpg", title: "segitiga"),
+          InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PersegiPage()));
+              },
+              child: CustomMenu(
+                  imageAssets: "assets/persegi.png", title: "persegi")),
+          InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PersegiPanjangPage()));
+              },
+              child: CustomMenu(
+                  imageAssets: "assets/ppanjang.png", title: "persegi panjang")),
+          Row(
+            children: [
+              Expanded(child: CustomMenu(imageAssets: "assets/segitiga.jpg", title: "segitiga")),
+              Expanded(child: CustomMenu(imageAssets: "assets/segitiga.jpg", title: "segitiga")),
+              Expanded(child: CustomMenu(imageAssets: "assets/segitiga.jpg", title: "segitiga")),
+            ],
+          ),
         ],
       ),
     );
